@@ -1,0 +1,336 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.header li {
+    cursor: pointer;
+}
+
+.header .get-in-touch-button, .get-in-touch-button-mobile {
+    border: 1px solid #0071CE;
+    background-color: #0071CE;
+    color: white;
+    align-content: center;
+    text-align: center;
+    width: 130px;
+    height: 60px;
+    transition: all .3s ease-in-out;
+}
+
+.get-in-touch-button-mobile {
+    cursor: pointer;
+    display: none;
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header .get-in-touch-button, .get-in-touch-button-mobile {
+    text-decoration: none;
+    color: white;
+}
+
+.header .get-in-touch-button:hover, .get-in-touch-button-mobile:hover {
+    background-color: white;
+    color: #0071CE;
+}
+
+.header .logo-container {
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.header .logo-container .logo {
+    min-width: 150px;
+    max-width: 175px;
+}
+
+.header .menu {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 700px;
+}
+
+.header .menu li {
+    list-style: none;
+    justify-content: space-evenly;
+    font-size: 19px;
+}
+
+.header .menu li a {
+    text-decoration: none;
+}
+
+.header .menu li a.text-link {
+    color: #0071CE;
+}
+
+.header .menu li a.text-link:hover {
+    text-decoration: underline;
+}
+
+.splash {
+    background-color: rgba(0, 113, 206, 0.15);
+    width: 100%;
+    margin-top: 150px;
+    height: 500px;
+}
+
+.splash .splash-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.splash .splash-content {
+    width: 50%;
+    padding: 90px 170px 0 60px;
+}
+
+.splash .splash-image {
+    width: 50%;
+    display: flex;
+}
+
+.splash .splash-image img {
+    max-width: 300px;
+    margin: -60px auto;
+}
+
+.splash .splash-content h1 {
+    font-size: 50px;
+    margin-right: 60px;
+}
+
+.splash .splash-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.splash .splash-container .download {
+    margin-top: 60px;
+}
+
+.splash .splash-container .app-store {
+    width: 176px;
+}
+
+.splash .splash-container .play-store {
+    width: 200px;
+}
+
+.features {
+    width: 100%;
+    margin-top: 150px;
+}
+
+.features-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.features-container ul {
+    padding-left: 70px;
+    font-size: 28px;
+    line-height: 50px;
+    list-style: none;
+}
+
+.team {
+    width: 100%;
+    margin-top: 150px;
+}
+
+.team .team-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.team .team-container .team-member {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    align-items: center;
+    text-align: center;
+}
+
+.team .team-container .team-member img {
+    width: 250px;
+}
+
+.team .team-container .team-member {
+    font-size: 20px;
+}
+
+.team .team-container .team-member h3 {
+    font-size: 24px;
+    color: #0071CE;
+}
+
+.privacy {
+    width: 100%;
+    margin: 130px 0;
+}
+
+.privacy .privacy-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1400px;
+    font-size: 28px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.get-in-touch {
+    width: 100%;
+    margin: 130px 0;
+    height: 400px;
+}
+
+.get-in-touch .get-in-touch-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.get-in-touch .get-in-touch-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.get-in-touch .get-in-touch-container form input, textarea {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.get-in-touch .get-in-touch-container form textarea {
+    min-height: 200px;
+    font-family: sans-serif;
+}
+
+.get-in-touch .get-in-touch-container form .get-in-touch-contact-info {
+    display: flex;
+    gap: 5px;
+}
+
+.get-in-touch .get-in-touch-container form .get-in-touch-contact-info input {
+    width: 50%;
+}
+
+.get-in-touch .get-in-touch-container form button {
+    cursor: pointer;
+    border: 1px solid #0071CE;
+    background-color: #0071CE;
+    color: white;
+    align-content: center;
+    text-align: center;
+    font-size: 20px;
+    height: 60px;
+    transition: all .3s ease-in-out;
+}
+
+.get-in-touch .get-in-touch-container form button:hover {
+    background-color: white;
+    color: #0071CE;
+}
+
+/* tablet */
+@media (max-width: 1024px) {
+    .get-in-touch-button-mobile {
+        display: block;
+    }
+
+    .header {
+        padding-left: 40px;
+    }
+
+    .header .menu {
+        display: none;
+    }
+
+    .header .logo-container {
+        width: 100%;
+        max-width: none;
+    }
+
+    .splash .splash-container {
+        flex-direction: column;
+    }
+
+    .splash .splash-content {
+        display: none;
+    }
+
+    .splash .splash-image {
+        width: 100%;
+    }
+
+    .about .about-container .team-member img {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .features {
+        margin-top: 120px;
+        margin-bottom: 100px;
+    }
+
+    .features-container ul {
+        font-size: 26px;
+        line-height: 36px;
+    }
+
+    .team {
+        margin-top: 50px;
+    }
+
+    .team .team-container {
+        flex-direction: column;
+    }
+
+    .team .team-container .team-member {
+        width: 100%;
+        align-items: initial;
+        flex-direction: row;
+        margin: 10px 0;
+        text-align: left;
+        gap: 10px;
+    }
+
+    .team .team-container .team-member img {
+        min-width: 200px;
+        width: 200px;
+        padding-left: 25px;
+    }
+
+    .features {
+        height: 100px;
+    }
+
+    .privacy .privacy-container {
+        font-size: 26px;
+    }
+}
