@@ -99,7 +99,7 @@ a {
 
 .splash .splash-content {
     width: 50%;
-    padding: 90px 170px 0 60px;
+    padding: 20px 0 0 60px;
 }
 
 .splash .splash-image {
@@ -113,8 +113,15 @@ a {
 }
 
 .splash .splash-content h1 {
-    font-size: 50px;
-    margin-right: 60px;
+    font-size: 46px;
+}
+
+.splash .splash-content h4 {
+    font-size: 22px;
+}
+
+.splash .splash-content p {
+    font-size: 20px;
 }
 
 .splash .splash-container {
@@ -122,6 +129,10 @@ a {
     margin: 0 auto;
     display: flex;
     flex-direction: row;
+}
+
+.splash .splash-container .splash-content-mobile {
+    display: none;
 }
 
 .splash .splash-container .download {
@@ -146,11 +157,20 @@ a {
     margin: 0 auto;
 }
 
+.features-container h2 {
+    padding-left: 70px;
+    color: #0071CE;
+    font-size: 30px;
+}
+
 .features-container ul {
     padding-left: 70px;
     font-size: 28px;
     line-height: 50px;
-    list-style: none;
+}
+
+.features-container ul li {
+    margin: 14px 0;
 }
 
 .team {
@@ -194,12 +214,12 @@ a {
 }
 
 .privacy .privacy-container {
+    padding-left: 70px;
     display: flex;
     flex-direction: row;
     max-width: 1400px;
     font-size: 28px;
     margin: 0 auto;
-    padding: 0 5%;
 }
 
 .get-in-touch {
@@ -275,12 +295,38 @@ a {
         max-width: none;
     }
 
+    .splash {
+        background-color: white;
+        height: auto;
+    }
+
     .splash .splash-container {
         flex-direction: column;
+        margin: 0 auto;
     }
 
     .splash .splash-content {
         display: none;
+    }
+
+    .splash .splash-container .splash-content-mobile {
+        display: flex;
+        flex-direction: column;
+        margin-top: 110px;
+        text-align: center;
+    }
+
+    .splash .splash-container .splash-content-mobile h1 {
+        color: #0071CE;
+    }
+
+    .splash .splash-container .splash-content-mobile p {
+        max-width: 450px;
+        margin: 0 auto;
+    }
+
+    .splash .splash-container .splash-content-mobile .download {
+        text-align: center;
     }
 
     .splash .splash-image {
@@ -290,21 +336,26 @@ a {
     .about .about-container .team-member img {
         width: 200px;
     }
+
+    .features-container h2 {
+        padding: 0;
+        text-align: center;
+    }
 }
 
 @media (max-width: 768px) {
     .features {
         margin-top: 120px;
-        margin-bottom: 100px;
     }
 
     .features-container ul {
-        font-size: 26px;
-        line-height: 36px;
+        font-size: 21px;
+        line-height: 30px;
+        padding: 10px;
     }
 
     .team {
-        margin-top: 50px;
+        margin-top: 110px;
     }
 
     .team .team-container {
@@ -326,11 +377,17 @@ a {
         padding-left: 25px;
     }
 
-    .features {
-        height: 100px;
+
+    .privacy {
+        margin: 40px 0;
     }
 
     .privacy .privacy-container {
         font-size: 26px;
+        padding: 10px;
+    }
+
+    .get-in-touch {
+        margin: 0;
     }
 }
