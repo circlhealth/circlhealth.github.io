@@ -1,191 +1,1155 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CirclHealth — Health. Simple.</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --green:#1A6B5A;--green-mid:#2E9B82;--green-dark:#0E4A3D;
-  --green-light:#E8F5F1;--green-xlight:#F4FAF8;
-  --gold:#F0A500;--gold-light:#FFF8E7;
-  --purple:#7C5DBF;--purple-light:#F3EFFF;
-  --text:#1C2B27;--text-mid:#4A6B62;--text-light:#8AA39B;
-  --border:#D8EAE5;--bg:#F4F7F5;
-}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CirclHealth — Health. Simple.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(–border);padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-wordmark{font-family:‘Fraunces’,serif;font-size:20px;font-weight:600;color:var(–green-dark);letter-spacing:-0.01em}
-.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
-.nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(–text-mid);transition:color 0.2s}
-.nav-links a:hover{color:var(–green)}
-.nav-cta{background:var(–green);color:#fff !important;padding:9px 20px;border-radius:100px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s}
-.nav-cta:hover{background:var(–green-dark) !important}
-@media(max-width:680px){.nav-links li:not(:last-child){display:none}}
+    :root {
+      --green: #1A6B5A;
+      --green-mid: #2E9B82;
+      --green-dark: #0E4A3D;
+      --green-light: #E8F5F1;
+      --green-xlight: #F4FAF8;
+      --gold: #F0A500;
+      --gold-light: #FFF8E7;
+      --purple: #7C5DBF;
+      --purple-light: #F3EFFF;
+      --text: #1C2B27;
+      --text-mid: #4A6B62;
+      --text-light: #8AA39B;
+      --border: #D8EAE5;
+      --bg: #F4F7F5;
+    }
 
-/* HERO */
-.hero{background:linear-gradient(160deg,#0E4A3D 0%,#1A6B5A 50%,#2E9B82 100%);padding:120px 32px 80px;text-align:center;position:relative;overflow:hidden}
-.hero-eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:20px}
-.hero-headline{font-family:‘Fraunces’,serif;font-size:clamp(40px,6vw,72px);font-weight:400;color:#fff;line-height:1.1;letter-spacing:-0.02em;margin-bottom:20px}
-.hero-headline em{font-style:italic;color:rgba(255,255,255,0.7)}
-.hero-sub{font-size:18px;color:rgba(255,255,255,0.7);max-width:480px;margin:0 auto 40px;line-height:1.6;font-weight:300}
-.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
-.btn-white{background:#fff;color:var(–green-dark);padding:14px 28px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;display:inline-block}
-.btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.15)}
-.btn-ghost-white{background:rgba(255,255,255,0.12);color:#fff;padding:14px 28px;border-radius:100px;font-size:15px;font-weight:500;text-decoration:none;border:1.5px solid rgba(255,255,255,0.3);transition:background 0.2s;display:inline-block}
-.btn-ghost-white:hover{background:rgba(255,255,255,0.2)}
-.hero-note{font-size:13px;color:rgba(255,255,255,0.4)}
+    html {
+      scroll-behavior: smooth
+    }
 
-/* CAROUSEL SECTION */
-.carousel-section{background:linear-gradient(180deg,#0E4A3D 0%,#F4FAF8 65%);padding:0 0 64px;overflow:hidden}
-.carousel-label{text-align:center;padding:32px 0 28px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5)}
-.carousel-viewport{width:100%;overflow:hidden;position:relative}
-.carousel-strip{display:flex;transition:transform 0.48s cubic-bezier(0.4,0,0.2,1);will-change:transform}
-.carousel-slide{flex-shrink:0;width:100%;display:flex;flex-direction:column;align-items:center;padding:0 16px 8px}
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #fff;
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased
+    }
 
-/* PHONE FRAME */
-.phone-frame{width:280px;flex-shrink:0;background:#0E1A18;border-radius:40px;border:2px solid rgba(255,255,255,0.1);box-shadow:0 40px 80px rgba(0,0,0,0.4);overflow:hidden;position:relative}
-.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:90px;height:20px;background:#0E1A18;border-radius:0 0 16px 16px;z-index:10}
-.phone-screen{width:100%;height:560px;overflow:hidden;position:relative;display:flex;flex-direction:column;font-family:‘DM Sans’,sans-serif;font-size:10px}
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
 
-/* PHONE SCREEN INTERNALS */
-.s-header{padding:26px 14px 14px;flex-shrink:0}
-.s-header-green{background:linear-gradient(135deg,#0E4A3D,#1A6B5A)}
-.s-logo-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
-.s-logo-left{display:flex;align-items:center;gap:6px}
-.s-wordmark{font-family:‘Fraunces’,serif;font-size:12px;font-weight:600;color:#fff}
-.s-share-btn{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center}
-.s-greeting{font-size:8.5px;color:rgba(255,255,255,0.55)}
-.s-name{font-family:‘Fraunces’,serif;font-size:17px;font-weight:400;color:#fff}
-.s-sub{font-size:8px;color:rgba(255,255,255,0.5);margin-top:2px}
-.s-title{font-family:‘Fraunces’,serif;font-size:16px;font-weight:400;color:#fff}
-.s-subtitle{font-size:8px;color:rgba(255,255,255,0.55);margin-top:3px}
-.s-body{padding:10px 12px;flex:1;overflow-y:auto}
-.s-body::-webkit-scrollbar{display:none}
-.s-section-label{font-size:7.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(–text-light);margin-bottom:7px}
-.s-card{background:#fff;border-radius:11px;border:1px solid var(–border);padding:9px 11px;margin-bottom:8px}
-.s-card-title{font-size:8px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(–text-light);margin-bottom:5px}
-.s-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(–border)}
-.s-row:last-child{border-bottom:none}
-.s-row-label{font-size:8.5px;font-weight:600;color:var(–text-mid)}
-.s-row-note{font-size:7.5px;color:var(–text-mid)}
-.s-snippet{font-size:8px;color:var(–text-mid);line-height:1.55;padding-bottom:7px;border-bottom:1px solid var(–border);margin-bottom:6px}
-.s-tap{font-size:7.5px;font-weight:600;color:var(–green);display:block;margin-top:3px}
-.s-visit-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(–border)}
-.s-visit-row:last-child{border-bottom:none}
-.s-visit-icon{width:28px;height:28px;border-radius:8px;background:var(–green-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.s-visit-dr{font-size:8.5px;font-weight:600;color:var(–text)}
-.s-visit-meta{font-size:7.5px;color:var(–text-light);margin-top:1px}
-.s-quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:9px}
-.s-quick-btn{background:var(–green-light);border-radius:11px;padding:9px 10px;display:flex;flex-direction:column;gap:5px}
-.s-quick-btn-label{font-size:8.5px;font-weight:600;color:var(–green)}
-.s-quick-btn-gold{background:var(–gold-light)}
-.s-quick-btn-label-gold{font-size:8.5px;font-weight:600;color:#8A5C00}
-.s-next-card{background:var(–gold-light);border:1px solid rgba(240,165,0,0.2);border-radius:11px;padding:9px 11px;margin-bottom:8px}
-.s-next-label{font-size:7.5px;font-weight:700;color:#8A5C00;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px}
-.s-next-item{font-size:7.5px;color:#6B4800;line-height:1.5;padding:2px 0;display:flex;gap:4px}
-.s-share-row{display:flex;gap:6px;margin-top:6px}
-.s-share-btn{flex:1;background:#fff;border:1.5px solid var(–border);border-radius:20px;padding:5px 8px;font-size:7.5px;font-weight:600;color:var(–text-mid);display:flex;align-items:center;justify-content:center;gap:3px}
-.s-translate-btn{flex:1;background:var(–purple-light);border:1.5px solid var(–purple);border-radius:20px;padding:5px 8px;font-size:7.5px;font-weight:600;color:var(–purple);display:flex;align-items:center;justify-content:center;gap:3px}
-.s-member-header{display:flex;align-items:center;gap:8px;margin-bottom:7px}
-.s-avi{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
-.s-member-name{font-size:9px;font-weight:600;color:var(–text)}
-.s-member-meta{font-size:7.5px;color:var(–text-light)}
-.s-doctor-said{font-size:7.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(–text-light);margin-bottom:4px;margin-top:2px}
-.s-chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:5px}
-.s-chip{background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.2);border-radius:30px;padding:4px 9px;display:flex;align-items:center;gap:5px;cursor:pointer}
-.s-chip.active{background:#FFF0F6;border-color:#C0457A}
-.s-chip-name{font-size:8px;font-weight:600;color:var(–text)}
-.s-chip-rel{font-size:7px;color:var(–text-light)}
-.s-tap-more{font-size:7.5px;font-weight:600;color:var(–green);cursor:pointer;margin-top:5px}
-.s-shared-by{font-size:7px;color:var(–text-light);font-style:italic;line-height:1.5;margin-top:2px}
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none
+    }
 
-/* SCREEN NAV BAR */
-.s-nav{position:absolute;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(–border);display:flex;justify-content:space-around;padding:7px 0 14px;flex-shrink:0}
-.s-nav-tab{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:7px;color:var(–text-light)}
-.s-nav-tab.on{color:var(–green)}
+    .nav-wordmark {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--green-dark);
+      letter-spacing: -0.01em
+    }
 
-/* CAROUSEL NAV */
-.carousel-nav{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:24px;padding:0 20px}
-.carousel-btn{width:42px;height:42px;border-radius:50%;background:#fff;border:1.5px solid var(–border);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s}
-.carousel-btn:hover{background:var(–green-light);border-color:var(–green)}
-.carousel-nav-centre{display:flex;flex-direction:column;align-items:center;gap:10px;flex:1;max-width:320px}
-.carousel-pips{display:flex;gap:7px;align-items:center}
-.carousel-pip{width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,0.15);border:none;cursor:pointer;padding:0;transition:background 0.2s,transform 0.2s}
-.carousel-pip.on{background:var(–green-dark);transform:scale(1.4)}
-.carousel-live-title{font-family:‘Fraunces’,serif;font-size:20px;font-weight:400;color:var(–green-dark);text-align:center;margin-bottom:4px}
-.carousel-live-sub{font-size:13px;color:var(–text-mid);text-align:center;line-height:1.5}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none
+    }
 
-/* CONTENT SECTIONS */
-.section{padding:80px 32px;max-width:1000px;margin:0 auto}
-.section-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(–green);margin-bottom:12px}
-.section-headline{font-family:‘Fraunces’,serif;font-size:clamp(28px,4vw,44px);font-weight:400;color:var(–text);line-height:1.2;letter-spacing:-0.02em;margin-bottom:16px}
-.section-body{font-size:16px;color:var(–text-mid);max-width:560px;line-height:1.7}
-.how-section{background:var(–green-xlight);border-top:1px solid var(–border);border-bottom:1px solid var(–border)}
-.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
-@media(max-width:700px){.steps-grid,.features-grid,.founders-grid,.values-grid{grid-template-columns:1fr !important}}
-.step-num{width:40px;height:40px;border-radius:12px;background:var(–green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:‘Fraunces’,serif;font-size:18px;font-weight:500;margin-bottom:12px}
-.step-title{font-size:17px;font-weight:600;color:var(–text);margin-bottom:4px}
-.step-body{font-size:14px;color:var(–text-mid);line-height:1.6}
-.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px}
-.feature-card{background:#fff;border:1.5px solid var(–border);border-radius:20px;padding:28px;transition:border-color 0.2s,box-shadow 0.2s}
-.feature-card:hover{border-color:var(–green);box-shadow:0 8px 24px rgba(26,107,90,0.08)}
-.feature-icon{width:44px;height:44px;border-radius:14px;background:var(–green-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-.feature-title{font-size:16px;font-weight:600;color:var(–text);margin-bottom:6px}
-.feature-body{font-size:14px;color:var(–text-mid);line-height:1.6}
-.badge-available{display:inline-block;margin-top:12px;font-size:11px;font-weight:600;padding:4px 12px;border-radius:100px;background:var(–green-light);color:var(–green-dark)}
-.badge-waitlist{display:inline-block;margin-top:12px;font-size:11px;font-weight:600;padding:4px 12px;border-radius:100px;background:var(–gold-light);color:#8A5C00}
-.privacy-block{background:var(–green-light);border:1.5px solid var(–border);border-radius:24px;padding:40px;margin-top:48px}
-.privacy-quote{font-family:‘Fraunces’,serif;font-size:18px;font-weight:400;font-style:italic;color:var(–green-dark);line-height:1.6;max-width:640px}
-.privacy-attr{margin-top:12px;font-size:14px;font-weight:600;color:var(–green);font-family:‘Fraunces’,serif;font-style:italic}
-.privacy-cards{display:flex;flex-direction:column;gap:10px;min-width:200px}
-.privacy-card{background:#fff;border-radius:12px;padding:14px;border:1px solid var(–border)}
-.privacy-card-title{font-size:12px;font-weight:700;color:var(–green-dark);margin-bottom:2px}
-.privacy-card-body{font-size:12px;color:var(–text-mid)}
-.values-section{background:var(–green-dark);padding:80px 32px}
-.values-section .section-eyebrow{color:rgba(255,255,255,0.45)}
-.values-section .section-headline{color:#fff}
-.values-tagline{font-size:16px;color:rgba(255,255,255,0.55);max-width:600px;margin:0 auto 48px;font-style:italic;font-family:‘Fraunces’,serif;font-weight:300;text-align:center}
-.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1000px;margin:0 auto}
-@media(max-width:900px){.values-grid{grid-template-columns:repeat(2,1fr)}}
-.value-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:24px}
-.value-name{font-family:‘Fraunces’,serif;font-size:20px;font-weight:400;color:#fff;margin-bottom:4px}
-.value-tagline{font-size:12px;color:rgba(255,255,255,0.45);font-style:italic;margin-bottom:12px}
-.value-body{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.65}
-.founders-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
-.founder-card{background:#fff;border:1.5px solid var(–border);border-radius:20px;padding:28px}
-.founder-avi{width:52px;height:52px;border-radius:16px;background:var(–green-light);display:flex;align-items:center;justify-content:center;font-family:‘Fraunces’,serif;font-size:20px;color:var(–green);font-weight:500;margin-bottom:16px}
-.founder-name{font-size:16px;font-weight:600;color:var(–text);margin-bottom:4px}
-.founder-role{font-size:13px;color:var(–green);font-weight:500;margin-bottom:8px}
-.founder-desc{font-size:13px;color:var(–text-mid);line-height:1.6}
-footer{background:var(–text);padding:60px 32px 40px}
-.footer-inner{max-width:1000px;margin:0 auto}
-.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:40px;flex-wrap:wrap;gap:32px}
-.footer-wordmark{font-family:‘Fraunces’,serif;font-size:22px;font-weight:500;color:#fff;display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.footer-tagline{font-size:14px;color:rgba(255,255,255,0.4)}
-.footer-links-title{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px}
-.footer-links a{text-decoration:none;font-size:14px;color:rgba(255,255,255,0.55);transition:color 0.2s}
-.footer-links a:hover{color:rgba(255,255,255,0.9)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.footer-copy{font-size:13px;color:rgba(255,255,255,0.3)}
-.footer-reg{font-size:12px;color:rgba(255,255,255,0.2)}
-</style>
+    .nav-links a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-mid);
+      transition: color 0.2s
+    }
 
+    .nav-links a:hover {
+      color: var(--green)
+    }
+
+    .nav-cta {
+      background: var(--green);
+      color: #fff !important;
+      padding: 9px 20px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s
+    }
+
+    .nav-cta:hover {
+      background: var(--green-dark) !important
+    }
+
+    @media (max-width: 680px) {
+      .nav-links li:not(:last-child) {
+        display: none
+      }
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(160deg, #0E4A3D 0%, #1A6B5A 50%, #2E9B82 100%);
+      padding: 120px 32px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 20px
+    }
+
+    .hero-headline {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.7)
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+      font-weight: 300
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--green-dark);
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: inline-block
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15)
+    }
+
+    .btn-ghost-white {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      transition: background 0.2s;
+      display: inline-block
+    }
+
+    .btn-ghost-white:hover {
+      background: rgba(255, 255, 255, 0.2)
+    }
+
+    .hero-note {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.4)
+    }
+
+    /* CAROUSEL SECTION */
+    .carousel-section {
+      background: linear-gradient(180deg, #0E4A3D 0%, #F4FAF8 65%);
+      padding: 0 0 64px;
+      overflow: hidden
+    }
+
+    .carousel-label {
+      text-align: center;
+      padding: 32px 0 28px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5)
+    }
+
+    .carousel-viewport {
+      width: 100%;
+      overflow: hidden;
+      position: relative
+    }
+
+    .carousel-strip {
+      display: flex;
+      transition: transform 0.48s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform
+    }
+
+    .carousel-slide {
+      flex-shrink: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 16px 8px
+    }
+
+    /* PHONE FRAME */
+    .phone-frame {
+      width: 280px;
+      flex-shrink: 0;
+      background: #0E1A18;
+      border-radius: 40px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      position: relative
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 20px;
+      background: #0E1A18;
+      border-radius: 0 0 16px 16px;
+      z-index: 10
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 560px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px
+    }
+
+    /* PHONE SCREEN INTERNALS */
+    .s-header {
+      padding: 26px 14px 14px;
+      flex-shrink: 0
+    }
+
+    .s-header-green {
+      background: linear-gradient(135deg, #0E4A3D, #1A6B5A)
+    }
+
+    .s-logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px
+    }
+
+    .s-logo-left {
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .s-wordmark {
+      font-family: 'Fraunces', serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff
+    }
+
+    .s-share-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .s-greeting {
+      font-size: 8.5px;
+      color: rgba(255, 255, 255, 0.55)
+    }
+
+    .s-name {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: #fff
+    }
+
+    .s-sub {
+      font-size: 8px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 2px
+    }
+
+    .s-title {
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #fff
+    }
+
+    .s-subtitle {
+      font-size: 8px;
+      color: rgba(255, 255, 255, 0.55);
+      margin-top: 3px
+    }
+
+    .s-body {
+      padding: 10px 12px;
+      flex: 1;
+      overflow-y: auto
+    }
+
+    .s-body::-webkit-scrollbar {
+      display: none
+    }
+
+    .s-section-label {
+      font-size: 7.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 7px
+    }
+
+    .s-card {
+      background: #fff;
+      border-radius: 11px;
+      border: 1px solid var(--border);
+      padding: 9px 11px;
+      margin-bottom: 8px
+    }
+
+    .s-card-title {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 5px
+    }
+
+    .s-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .s-row:last-child {
+      border-bottom: none
+    }
+
+    .s-row-label {
+      font-size: 8.5px;
+      font-weight: 600;
+      color: var(--text-mid)
+    }
+
+    .s-row-note {
+      font-size: 7.5px;
+      color: var(--text-mid)
+    }
+
+    .s-snippet {
+      font-size: 8px;
+      color: var(--text-mid);
+      line-height: 1.55;
+      padding-bottom: 7px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 6px
+    }
+
+    .s-tap {
+      font-size: 7.5px;
+      font-weight: 600;
+      color: var(--green);
+      display: block;
+      margin-top: 3px
+    }
+
+    .s-visit-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .s-visit-row:last-child {
+      border-bottom: none
+    }
+
+    .s-visit-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0
+    }
+
+    .s-visit-dr {
+      font-size: 8.5px;
+      font-weight: 600;
+      color: var(--text)
+    }
+
+    .s-visit-meta {
+      font-size: 7.5px;
+      color: var(--text-light);
+      margin-top: 1px
+    }
+
+    .s-quick-grid {
+      display: grid;
+      grid-template-columns:1fr 1fr;
+      gap: 7px;
+      margin-bottom: 9px
+    }
+
+    .s-quick-btn {
+      background: var(--green-light);
+      border-radius: 11px;
+      padding: 9px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px
+    }
+
+    .s-quick-btn-label {
+      font-size: 8.5px;
+      font-weight: 600;
+      color: var(--green)
+    }
+
+    .s-quick-btn-gold {
+      background: var(--gold-light)
+    }
+
+    .s-quick-btn-label-gold {
+      font-size: 8.5px;
+      font-weight: 600;
+      color: #8A5C00
+    }
+
+    .s-next-card {
+      background: var(--gold-light);
+      border: 1px solid rgba(240, 165, 0, 0.2);
+      border-radius: 11px;
+      padding: 9px 11px;
+      margin-bottom: 8px
+    }
+
+    .s-next-label {
+      font-size: 7.5px;
+      font-weight: 700;
+      color: #8A5C00;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 4px
+    }
+
+    .s-next-item {
+      font-size: 7.5px;
+      color: #6B4800;
+      line-height: 1.5;
+      padding: 2px 0;
+      display: flex;
+      gap: 4px
+    }
+
+    .s-share-row {
+      display: flex;
+      gap: 6px;
+      margin-top: 6px
+    }
+
+    .s-share-btn {
+      flex: 1;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 8px;
+      font-size: 7.5px;
+      font-weight: 600;
+      color: var(--text-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px
+    }
+
+    .s-translate-btn {
+      flex: 1;
+      background: var(--purple-light);
+      border: 1.5px solid var(--purple);
+      border-radius: 20px;
+      padding: 5px 8px;
+      font-size: 7.5px;
+      font-weight: 600;
+      color: var(--purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px
+    }
+
+    .s-member-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 7px
+    }
+
+    .s-avi {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0
+    }
+
+    .s-member-name {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--text)
+    }
+
+    .s-member-meta {
+      font-size: 7.5px;
+      color: var(--text-light)
+    }
+
+    .s-doctor-said {
+      font-size: 7.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 4px;
+      margin-top: 2px
+    }
+
+    .s-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 5px
+    }
+
+    .s-chip {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 30px;
+      padding: 4px 9px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer
+    }
+
+    .s-chip.active {
+      background: #FFF0F6;
+      border-color: #C0457A
+    }
+
+    .s-chip-name {
+      font-size: 8px;
+      font-weight: 600;
+      color: var(--text)
+    }
+
+    .s-chip-rel {
+      font-size: 7px;
+      color: var(--text-light)
+    }
+
+    .s-tap-more {
+      font-size: 7.5px;
+      font-weight: 600;
+      color: var(--green);
+      cursor: pointer;
+      margin-top: 5px
+    }
+
+    .s-shared-by {
+      font-size: 7px;
+      color: var(--text-light);
+      font-style: italic;
+      line-height: 1.5;
+      margin-top: 2px
+    }
+
+    /* SCREEN NAV BAR */
+    .s-nav {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      padding: 7px 0 14px;
+      flex-shrink: 0
+    }
+
+    .s-nav-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      font-size: 7px;
+      color: var(--text-light)
+    }
+
+    .s-nav-tab.on {
+      color: var(--green)
+    }
+
+    /* CAROUSEL NAV */
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+      padding: 0 20px
+    }
+
+    .carousel-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s
+    }
+
+    .carousel-btn:hover {
+      background: var(--green-light);
+      border-color: var(--green)
+    }
+
+    .carousel-nav-centre {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      max-width: 320px
+    }
+
+    .carousel-pips {
+      display: flex;
+      gap: 7px;
+      align-items: center
+    }
+
+    .carousel-pip {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.15);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s, transform 0.2s
+    }
+
+    .carousel-pip.on {
+      background: var(--green-dark);
+      transform: scale(1.4)
+    }
+
+    .carousel-live-title {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--green-dark);
+      text-align: center;
+      margin-bottom: 4px
+    }
+
+    .carousel-live-sub {
+      font-size: 13px;
+      color: var(--text-mid);
+      text-align: center;
+      line-height: 1.5
+    }
+
+    /* CONTENT SECTIONS */
+    .section {
+      padding: 80px 32px;
+      max-width: 1000px;
+      margin: 0 auto
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px
+    }
+
+    .section-headline {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px
+    }
+
+    .section-body {
+      font-size: 16px;
+      color: var(--text-mid);
+      max-width: 560px;
+      line-height: 1.7
+    }
+
+    .how-section {
+      background: var(--green-xlight);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border)
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 48px
+    }
+
+    @media (max-width: 700px) {
+      .steps-grid, .features-grid, .founders-grid, .values-grid {
+        grid-template-columns:1fr !important
+      }
+    }
+
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--green);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 12px
+    }
+
+    .step-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px
+    }
+
+    .step-body {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.6
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 48px
+    }
+
+    .feature-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      transition: border-color 0.2s, box-shadow 0.2s
+    }
+
+    .feature-card:hover {
+      border-color: var(--green);
+      box-shadow: 0 8px 24px rgba(26, 107, 90, 0.08)
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px
+    }
+
+    .feature-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px
+    }
+
+    .feature-body {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.6
+    }
+
+    .badge-available {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: var(--green-light);
+      color: var(--green-dark)
+    }
+
+    .badge-waitlist {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: var(--gold-light);
+      color: #8A5C00
+    }
+
+    .privacy-block {
+      background: var(--green-light);
+      border: 1.5px solid var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 48px
+    }
+
+    .privacy-quote {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--green-dark);
+      line-height: 1.6;
+      max-width: 640px
+    }
+
+    .privacy-attr {
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--green);
+      font-family: 'Fraunces', serif;
+      font-style: italic
+    }
+
+    .privacy-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 200px
+    }
+
+    .privacy-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px;
+      border: 1px solid var(--border)
+    }
+
+    .privacy-card-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 2px
+    }
+
+    .privacy-card-body {
+      font-size: 12px;
+      color: var(--text-mid)
+    }
+
+    .values-section {
+      background: var(--green-dark);
+      padding: 80px 32px
+    }
+
+    .values-section .section-eyebrow {
+      color: rgba(255, 255, 255, 0.45)
+    }
+
+    .values-section .section-headline {
+      color: #fff
+    }
+
+    .values-tagline {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.55);
+      max-width: 600px;
+      margin: 0 auto 48px;
+      font-style: italic;
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      text-align: center
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap: 16px;
+      max-width: 1000px;
+      margin: 0 auto
+    }
+
+    @media (max-width: 900px) {
+      .values-grid {
+        grid-template-columns:repeat(2, 1fr)
+      }
+    }
+
+    .value-card {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 24px
+    }
+
+    .value-name {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 4px
+    }
+
+    .value-tagline {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.45);
+      font-style: italic;
+      margin-bottom: 12px
+    }
+
+    .value-body {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.65
+    }
+
+    .founders-grid {
+      display: grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px
+    }
+
+    .founder-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 28px
+    }
+
+    .founder-avi {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      color: var(--green);
+      font-weight: 500;
+      margin-bottom: 16px
+    }
+
+    .founder-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px
+    }
+
+    .founder-role {
+      font-size: 13px;
+      color: var(--green);
+      font-weight: 500;
+      margin-bottom: 8px
+    }
+
+    .founder-desc {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.6
+    }
+
+    footer {
+      background: var(--text);
+      padding: 60px 32px 40px
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 32px
+    }
+
+    .footer-wordmark {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.4)
+    }
+
+    .footer-links-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+      margin-bottom: 12px
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.55);
+      transition: color 0.2s
+    }
+
+    .footer-links a:hover {
+      color: rgba(255, 255, 255, 0.9)
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.3)
+    }
+
+    .footer-reg {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.2)
+    }
+  </style>
 </head>
 <body>
 
 <!-- LOGO SVG DEFINITION (reused everywhere) -->
-
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <symbol id="circllogo-white" viewBox="0 0 36 36">
@@ -205,25 +1169,65 @@ footer{background:var(–text);padding:60px 32px 40px}
       </g>
     </symbol>
     <!-- icons -->
-    <symbol id="ico-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></symbol>
-    <symbol id="ico-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></symbol>
-    <symbol id="ico-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
-    <symbol id="ico-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16,16 12,12 8,16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></symbol>
-    <symbol id="ico-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></symbol>
-    <symbol id="ico-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="11" rx="2"/><line x1="12" y1="1" x2="12" y2="14"/><polyline points="8,5 12,1 16,5"/></symbol>
-    <symbol id="ico-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></symbol>
-    <symbol id="ico-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></symbol>
-    <symbol id="ico-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></symbol>
-    <symbol id="ico-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></symbol>
-    <symbol id="ico-arrow-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></symbol>
+    <symbol id="ico-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+      <polyline points="9,22 9,12 15,12 15,22"/>
+    </symbol>
+    <symbol id="ico-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="9" y="2" width="6" height="11" rx="3"/>
+      <path d="M19 10v2a7 7 0 01-14 0v-2"/>
+      <line x1="12" y1="19" x2="12" y2="22"/>
+      <line x1="8" y1="22" x2="16" y2="22"/>
+    </symbol>
+    <symbol id="ico-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+      <circle cx="12" cy="7" r="4"/>
+    </symbol>
+    <symbol id="ico-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <polyline points="16,16 12,12 8,16"/>
+      <line x1="12" y1="12" x2="12" y2="21"/>
+      <path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/>
+    </symbol>
+    <symbol id="ico-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+      <path d="M16 3.13a4 4 0 010 7.75"/>
+    </symbol>
+    <symbol id="ico-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+      <rect x="5" y="10" width="14" height="11" rx="2"/>
+      <line x1="12" y1="1" x2="12" y2="14"/>
+      <polyline points="8,5 12,1 16,5"/>
+    </symbol>
+    <symbol id="ico-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="2" y1="12" x2="22" y2="12"/>
+      <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+    </symbol>
+    <symbol id="ico-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+      <polyline points="14,2 14,8 20,8"/>
+    </symbol>
+    <symbol id="ico-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="3" y="11" width="18" height="11" rx="2"/>
+      <path d="M7 11V7a5 5 0 0110 0v4"/>
+    </symbol>
+    <symbol id="ico-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="9,18 15,12 9,6"/>
+    </symbol>
+    <symbol id="ico-arrow-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="15,18 9,12 15,6"/>
+    </symbol>
   </defs>
 </svg>
 
 <!-- NAV -->
-
 <nav>
   <a class="nav-logo" href="#">
-    <svg width="36" height="36"><use href="#circllogo-white"/></svg>
+    <svg width="36" height="36">
+      <use href="#circllogo-white"/>
+    </svg>
     <span class="nav-wordmark">CirclHealth</span>
   </a>
   <ul class="nav-links">
@@ -235,7 +1239,6 @@ footer{background:var(–text);padding:60px 32px 40px}
 </nav>
 
 <!-- HERO -->
-
 <section class="hero">
   <span class="hero-eyebrow">Launching in Canada &middot; 2026</span>
   <h1 class="hero-headline">Health.<em> Simple.</em></h1>
@@ -248,233 +1251,365 @@ footer{background:var(–text);padding:60px 32px 40px}
 </section>
 
 <!-- APP CAROUSEL -->
-
 <section class="carousel-section">
   <p class="carousel-label">See the app</p>
 
   <div class="carousel-viewport">
     <div class="carousel-strip" id="cStrip">
 
-```
-  <!-- SLIDE 1: DASHBOARD -->
-  <div class="carousel-slide">
-    <div class="phone-frame">
-      <div class="phone-notch"></div>
-      <div class="phone-screen">
-        <div class="s-header s-header-green">
-          <div class="s-logo-row">
-            <div class="s-logo-left">
-              <svg width="18" height="18"><use href="#circllogo-screen"/></svg>
-              <span class="s-wordmark">CirclHealth</span>
+      <!-- SLIDE 1: DASHBOARD -->
+      <div class="carousel-slide">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="s-header s-header-green">
+              <div class="s-logo-row">
+                <div class="s-logo-left">
+                  <svg width="18" height="18">
+                    <use href="#circllogo-screen"/>
+                  </svg>
+                  <span class="s-wordmark">CirclHealth</span>
+                </div>
+                <div class="s-share-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white"
+                       stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="10" width="14" height="11" rx="2"/>
+                    <line x1="12" y1="1" x2="12" y2="14"/>
+                    <polyline points="8,5 12,1 16,5"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="s-greeting">Good morning,</div>
+              <div class="s-name">Sarah &#128075;</div>
+              <div class="s-sub">Here's a simple look at how you're doing</div>
             </div>
-            <div class="s-share-btn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="11" rx="2"/><line x1="12" y1="1" x2="12" y2="14"/><polyline points="8,5 12,1 16,5"/></svg>
-            </div>
-          </div>
-          <div class="s-greeting">Good morning,</div>
-          <div class="s-name">Sarah &#128075;</div>
-          <div class="s-sub">Here's a simple look at how you're doing</div>
-        </div>
-        <div class="s-body">
-          <div class="s-quick-grid">
-            <div class="s-quick-btn">
-              <svg width="14" height="14" stroke="#1A6B5A" fill="none"><use href="#ico-mic"/></svg>
-              <div class="s-quick-btn-label">Record a Visit</div>
-            </div>
-            <div class="s-quick-btn s-quick-btn-gold">
-              <svg width="14" height="14" stroke="#8A5C00" fill="none"><use href="#ico-upload"/></svg>
-              <div class="s-quick-btn-label-gold">Upload Records</div>
-            </div>
-          </div>
-          <div class="s-section-label">Recent Visits</div>
-          <div class="s-card">
-            <div class="s-visit-row">
-              <div class="s-visit-icon"><svg width="14" height="14" stroke="#1A6B5A" fill="none"><use href="#ico-doc"/></svg></div>
-              <div>
-                <div class="s-visit-dr">Dr. James Harlow</div>
-                <div class="s-visit-meta">Family Medicine &middot; Feb 12, 2025</div>
+            <div class="s-body">
+              <div class="s-quick-grid">
+                <div class="s-quick-btn">
+                  <svg width="14" height="14" stroke="#1A6B5A" fill="none">
+                    <use href="#ico-mic"/>
+                  </svg>
+                  <div class="s-quick-btn-label">Record a Visit</div>
+                </div>
+                <div class="s-quick-btn s-quick-btn-gold">
+                  <svg width="14" height="14" stroke="#8A5C00" fill="none">
+                    <use href="#ico-upload"/>
+                  </svg>
+                  <div class="s-quick-btn-label-gold">Upload Records</div>
+                </div>
+              </div>
+              <div class="s-section-label">Recent Visits</div>
+              <div class="s-card">
+                <div class="s-visit-row">
+                  <div class="s-visit-icon">
+                    <svg width="14" height="14" stroke="#1A6B5A" fill="none">
+                      <use href="#ico-doc"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="s-visit-dr">Dr. James Harlow</div>
+                    <div class="s-visit-meta">Family Medicine &middot; Feb 12, 2025</div>
+                  </div>
+                </div>
+                <div class="s-visit-row">
+                  <div class="s-visit-icon">
+                    <svg width="14" height="14" stroke="#1A6B5A" fill="none">
+                      <use href="#ico-doc"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="s-visit-dr">Dr. Priya Nair</div>
+                    <div class="s-visit-meta">Endocrinology &middot; Jan 7, 2025</div>
+                  </div>
+                </div>
+              </div>
+              <div class="s-section-label">Your Records</div>
+              <div class="s-card">
+                <div class="s-visit-row">
+                  <div class="s-visit-icon" style="background:var(--gold-light)">
+                    <svg width="14" height="14" stroke="#8A5C00" fill="none">
+                      <use href="#ico-file"/>
+                    </svg>
+                  </div>
+                  <div style="flex:1">
+                    <div class="s-visit-dr">LabResults_Feb2025.pdf</div>
+                    <div class="s-visit-meta">Uploaded Feb 14 &middot; Explained</div>
+                  </div>
+                  <span style="font-size:7.5px;font-weight:600;padding:2px 7px;border-radius:20px;background:var(--green-light);color:var(--green-dark)">Done</span>
+                </div>
               </div>
             </div>
-            <div class="s-visit-row">
-              <div class="s-visit-icon"><svg width="14" height="14" stroke="#1A6B5A" fill="none"><use href="#ico-doc"/></svg></div>
-              <div>
-                <div class="s-visit-dr">Dr. Priya Nair</div>
-                <div class="s-visit-meta">Endocrinology &middot; Jan 7, 2025</div>
+            <div class="s-nav">
+              <div class="s-nav-tab on">
+                <svg width="13" height="13" stroke="#1A6B5A" fill="none">
+                  <use href="#ico-home"/>
+                </svg>
+                <span>Home</span></div>
+              <div class="s-nav-tab">
+                <svg width="13" height="13" stroke="#8AA39B" fill="none">
+                  <use href="#ico-mic"/>
+                </svg>
+                <span>Record</span></div>
+              <div class="s-nav-tab">
+                <svg width="13" height="13" stroke="#8AA39B" fill="none">
+                  <use href="#ico-doc"/>
+                </svg>
+                <span>Doctors</span></div>
+              <div class="s-nav-tab">
+                <svg width="13" height="13" stroke="#8AA39B" fill="none">
+                  <use href="#ico-upload"/>
+                </svg>
+                <span>Upload</span></div>
+              <div class="s-nav-tab">
+                <svg width="13" height="13" stroke="#8AA39B" fill="none">
+                  <use href="#ico-users"/>
+                </svg>
+                <span>My Circle</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: DOCTOR SUMMARY -->
+      <div class="carousel-slide">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="s-header s-header-green">
+              <div class="s-logo-row">
+                <div class="s-logo-left">
+                  <svg width="18" height="18">
+                    <use href="#circllogo-screen"/>
+                  </svg>
+                  <span class="s-wordmark">CirclHealth</span>
+                </div>
+                <div class="s-share-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white"
+                       stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="10" width="14" height="11" rx="2"/>
+                    <line x1="12" y1="1" x2="12" y2="14"/>
+                    <polyline points="8,5 12,1 16,5"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="s-title">Doctor Summary</div>
+              <div class="s-subtitle">Your doctor's words, in plain language</div>
+            </div>
+            <div class="s-body">
+              <div class="s-card" style="margin-bottom:8px;display:flex;align-items:center;gap:8px">
+                <div class="s-visit-icon">
+                  <svg width="14" height="14" stroke="#1A6B5A" fill="none">
+                    <use href="#ico-doc"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="s-visit-dr">Dr. James Harlow</div>
+                  <div class="s-visit-meta">Family Medicine &middot; Feb 12, 2025</div>
+                </div>
+              </div>
+              <div class="s-card">
+                <div class="s-card-title">Doctor said</div>
+                <div class="s-snippet">
+                  "Overall things are looking good. There are a couple of areas worth keeping an eye
+                  on."
+                  <span class="s-tap">Tap to read full summary &#8594;</span>
+                </div>
+                <div class="s-row">
+                  <span class="s-row-label">Blood Sugar</span>
+                  <span class="s-row-note">Doctor said: healthy</span>
+                </div>
+                <div class="s-row">
+                  <span class="s-row-label">Bad Cholesterol</span>
+                  <span class="s-row-note">Doctor said: monitor</span>
+                </div>
+                <div class="s-row">
+                  <span class="s-row-label">Vitamins</span>
+                  <span class="s-row-note">Doctor said: needs attention</span>
+                </div>
+              </div>
+              <div class="s-next-card">
+                <div class="s-next-label">Next steps</div>
+                <div class="s-next-item">
+                  <span>&#8594;</span><span>Start a daily vitamin supplement</span></div>
+                <div class="s-next-item"><span>&#8594;</span><span>Add more fibre to meals</span></div>
+                <div class="s-next-item">
+                  <span>&#8594;</span><span>Follow-up blood test in 3 months</span></div>
+              </div>
+              <div class="s-share-row">
+                <div class="s-share-btn">
+                  <svg width="9" height="9" stroke="#4A6B62" fill="none">
+                    <use href="#ico-share"/>
+                  </svg>
+                  Share
+                </div>
+                <div class="s-translate-btn">
+                  <svg width="9" height="9" stroke="#7C5DBF" fill="none">
+                    <use href="#ico-globe"/>
+                  </svg>
+                  Translate
+                </div>
               </div>
             </div>
+            <div class="s-nav">
+              <div class="s-nav-tab">
+                <svg width="13" height="13" stroke="#8AA39B" fill="none">
+                  <use href="#ico-home"/>
+                </svg>
+                <span>Home</span></div>
+              <div class="s-nav-tab">
+                <svg width="13" height="13" stroke="#8AA39B" fill="none">
+                  <use href="#ico-mic"/>
+                </svg>
+                <span>Record</span></div>
+              <div class="s-nav-tab on">
+                <svg width="13" height="13" stroke="#1A6B5A" fill="none">
+                  <use href="#ico-doc"/>
+                </svg>
+                <span>Doctors</span></div>
+              <div class="s-nav-tab">
+                <svg width="13" height="13" stroke="#8AA39B" fill="none">
+                  <use href="#ico-upload"/>
+                </svg>
+                <span>Upload</span></div>
+              <div class="s-nav-tab">
+                <svg width="13" height="13" stroke="#8AA39B" fill="none">
+                  <use href="#ico-users"/>
+                </svg>
+                <span>My Circle</span></div>
+            </div>
           </div>
-          <div class="s-section-label">Your Records</div>
-          <div class="s-card">
-            <div class="s-visit-row">
-              <div class="s-visit-icon" style="background:var(--gold-light)"><svg width="14" height="14" stroke="#8A5C00" fill="none"><use href="#ico-file"/></svg></div>
-              <div style="flex:1">
-                <div class="s-visit-dr">LabResults_Feb2025.pdf</div>
-                <div class="s-visit-meta">Uploaded Feb 14 &middot; Explained</div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: MY CIRCLE -->
+      <div class="carousel-slide">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="s-header s-header-green">
+              <div class="s-logo-row">
+                <div class="s-logo-left">
+                  <svg width="18" height="18">
+                    <use href="#circllogo-screen"/>
+                  </svg>
+                  <span class="s-wordmark">CirclHealth</span>
+                </div>
+                <div class="s-share-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white"
+                       stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="10" width="14" height="11" rx="2"/>
+                    <line x1="12" y1="1" x2="12" y2="14"/>
+                    <polyline points="8,5 12,1 16,5"/>
+                  </svg>
+                </div>
               </div>
-              <span style="font-size:7.5px;font-weight:600;padding:2px 7px;border-radius:20px;background:var(--green-light);color:var(--green-dark)">Done</span>
+              <div class="s-title">My Circle</div>
+              <div class="s-subtitle">Keep an eye on the people you care about</div>
+            </div>
+            <div class="s-body">
+              <div class="s-section-label">Circle Members</div>
+              <div class="s-chips" style="margin-bottom:10px">
+                <div class="s-chip active">
+                  <div class="s-avi" style="width:22px;height:22px;font-size:8px;background:#C0457A">
+                    M
+                  </div>
+                  <div>
+                    <div class="s-chip-name">Mom</div>
+                    <div class="s-chip-rel">Age 68</div>
+                  </div>
+                </div>
+                <div class="s-chip" style="background:#fff;border-color:var(--border)">
+                  <div class="s-avi" style="width:22px;height:22px;font-size:8px;background:#1A6B5A">
+                    D
+                  </div>
+                  <div>
+                    <div class="s-chip-name">Dad</div>
+                    <div class="s-chip-rel">Age 71</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Mom card -->
+              <div class="s-card" style="margin-bottom:8px">
+                <div class="s-member-header">
+                  <div class="s-avi" style="width:30px;height:30px;font-size:11px;background:#C0457A">
+                    M
+                  </div>
+                  <div>
+                    <div class="s-member-name">Mom &middot; Maria Chen</div>
+                    <div class="s-member-meta">Updated Feb 10, 2025</div>
+                  </div>
+                </div>
+                <div class="s-doctor-said">Doctor said</div>
+                <div class="s-row">
+                  <span class="s-row-label">Blood Sugar</span>
+                  <span class="s-row-note">Doctor said: should be monitored</span>
+                </div>
+                <div class="s-row">
+                  <span class="s-row-label">Heart Health</span>
+                  <span class="s-row-note">Doctor said: this was healthy</span>
+                </div>
+                <div class="s-tap-more">Tap to read full summary &#8594;</div>
+                <div class="s-shared-by">Shared by Mom &middot; Dr. Chen visit Jan 20</div>
+              </div>
+              <!-- Dad card -->
+              <div class="s-card">
+                <div class="s-member-header">
+                  <div class="s-avi" style="width:30px;height:30px;font-size:11px;background:#1A6B5A">
+                    D
+                  </div>
+                  <div>
+                    <div class="s-member-name">Dad &middot; David Chen</div>
+                    <div class="s-member-meta">Updated Jan 22, 2025</div>
+                  </div>
+                </div>
+                <div class="s-doctor-said">Doctor said</div>
+                <div class="s-row">
+                  <span class="s-row-label">Bad Cholesterol</span>
+                  <span class="s-row-note">Doctor said: needs improvement</span>
+                </div>
+                <div class="s-tap-more">Tap to read full summary &#8594;</div>
+                <div class="s-shared-by">Shared by Dad &middot; Dr. Patel visit Jan 18</div>
+              </div>
+            </div>
+            <div class="s-nav">
+              <div class="s-nav-tab">
+                <svg width="13" height="13" stroke="#8AA39B" fill="none">
+                  <use href="#ico-home"/>
+                </svg>
+                <span>Home</span></div>
+              <div class="s-nav-tab">
+                <svg width="13" height="13" stroke="#8AA39B" fill="none">
+                  <use href="#ico-mic"/>
+                </svg>
+                <span>Record</span></div>
+              <div class="s-nav-tab">
+                <svg width="13" height="13" stroke="#8AA39B" fill="none">
+                  <use href="#ico-doc"/>
+                </svg>
+                <span>Doctors</span></div>
+              <div class="s-nav-tab">
+                <svg width="13" height="13" stroke="#8AA39B" fill="none">
+                  <use href="#ico-upload"/>
+                </svg>
+                <span>Upload</span></div>
+              <div class="s-nav-tab on">
+                <svg width="13" height="13" stroke="#1A6B5A" fill="none">
+                  <use href="#ico-users"/>
+                </svg>
+                <span>My Circle</span></div>
             </div>
           </div>
-        </div>
-        <div class="s-nav">
-          <div class="s-nav-tab on"><svg width="13" height="13" stroke="#1A6B5A" fill="none"><use href="#ico-home"/></svg><span>Home</span></div>
-          <div class="s-nav-tab"><svg width="13" height="13" stroke="#8AA39B" fill="none"><use href="#ico-mic"/></svg><span>Record</span></div>
-          <div class="s-nav-tab"><svg width="13" height="13" stroke="#8AA39B" fill="none"><use href="#ico-doc"/></svg><span>Doctors</span></div>
-          <div class="s-nav-tab"><svg width="13" height="13" stroke="#8AA39B" fill="none"><use href="#ico-upload"/></svg><span>Upload</span></div>
-          <div class="s-nav-tab"><svg width="13" height="13" stroke="#8AA39B" fill="none"><use href="#ico-users"/></svg><span>My Circle</span></div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- SLIDE 2: DOCTOR SUMMARY -->
-  <div class="carousel-slide">
-    <div class="phone-frame">
-      <div class="phone-notch"></div>
-      <div class="phone-screen">
-        <div class="s-header s-header-green">
-          <div class="s-logo-row">
-            <div class="s-logo-left">
-              <svg width="18" height="18"><use href="#circllogo-screen"/></svg>
-              <span class="s-wordmark">CirclHealth</span>
-            </div>
-            <div class="s-share-btn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="11" rx="2"/><line x1="12" y1="1" x2="12" y2="14"/><polyline points="8,5 12,1 16,5"/></svg>
-            </div>
-          </div>
-          <div class="s-title">Doctor Summary</div>
-          <div class="s-subtitle">Your doctor's words, in plain language</div>
-        </div>
-        <div class="s-body">
-          <div class="s-card" style="margin-bottom:8px;display:flex;align-items:center;gap:8px">
-            <div class="s-visit-icon"><svg width="14" height="14" stroke="#1A6B5A" fill="none"><use href="#ico-doc"/></svg></div>
-            <div>
-              <div class="s-visit-dr">Dr. James Harlow</div>
-              <div class="s-visit-meta">Family Medicine &middot; Feb 12, 2025</div>
-            </div>
-          </div>
-          <div class="s-card">
-            <div class="s-card-title">Doctor said</div>
-            <div class="s-snippet">
-              "Overall things are looking good. There are a couple of areas worth keeping an eye on."
-              <span class="s-tap">Tap to read full summary &#8594;</span>
-            </div>
-            <div class="s-row">
-              <span class="s-row-label">Blood Sugar</span>
-              <span class="s-row-note">Doctor said: healthy</span>
-            </div>
-            <div class="s-row">
-              <span class="s-row-label">Bad Cholesterol</span>
-              <span class="s-row-note">Doctor said: monitor</span>
-            </div>
-            <div class="s-row">
-              <span class="s-row-label">Vitamins</span>
-              <span class="s-row-note">Doctor said: needs attention</span>
-            </div>
-          </div>
-          <div class="s-next-card">
-            <div class="s-next-label">Next steps</div>
-            <div class="s-next-item"><span>&#8594;</span><span>Start a daily vitamin supplement</span></div>
-            <div class="s-next-item"><span>&#8594;</span><span>Add more fibre to meals</span></div>
-            <div class="s-next-item"><span>&#8594;</span><span>Follow-up blood test in 3 months</span></div>
-          </div>
-          <div class="s-share-row">
-            <div class="s-share-btn"><svg width="9" height="9" stroke="#4A6B62" fill="none"><use href="#ico-share"/></svg> Share</div>
-            <div class="s-translate-btn"><svg width="9" height="9" stroke="#7C5DBF" fill="none"><use href="#ico-globe"/></svg> Translate</div>
-          </div>
-        </div>
-        <div class="s-nav">
-          <div class="s-nav-tab"><svg width="13" height="13" stroke="#8AA39B" fill="none"><use href="#ico-home"/></svg><span>Home</span></div>
-          <div class="s-nav-tab"><svg width="13" height="13" stroke="#8AA39B" fill="none"><use href="#ico-mic"/></svg><span>Record</span></div>
-          <div class="s-nav-tab on"><svg width="13" height="13" stroke="#1A6B5A" fill="none"><use href="#ico-doc"/></svg><span>Doctors</span></div>
-          <div class="s-nav-tab"><svg width="13" height="13" stroke="#8AA39B" fill="none"><use href="#ico-upload"/></svg><span>Upload</span></div>
-          <div class="s-nav-tab"><svg width="13" height="13" stroke="#8AA39B" fill="none"><use href="#ico-users"/></svg><span>My Circle</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 3: MY CIRCLE -->
-  <div class="carousel-slide">
-    <div class="phone-frame">
-      <div class="phone-notch"></div>
-      <div class="phone-screen">
-        <div class="s-header s-header-green">
-          <div class="s-logo-row">
-            <div class="s-logo-left">
-              <svg width="18" height="18"><use href="#circllogo-screen"/></svg>
-              <span class="s-wordmark">CirclHealth</span>
-            </div>
-            <div class="s-share-btn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="11" rx="2"/><line x1="12" y1="1" x2="12" y2="14"/><polyline points="8,5 12,1 16,5"/></svg>
-            </div>
-          </div>
-          <div class="s-title">My Circle</div>
-          <div class="s-subtitle">Keep an eye on the people you care about</div>
-        </div>
-        <div class="s-body">
-          <div class="s-section-label">Circle Members</div>
-          <div class="s-chips" style="margin-bottom:10px">
-            <div class="s-chip active">
-              <div class="s-avi" style="width:22px;height:22px;font-size:8px;background:#C0457A">M</div>
-              <div><div class="s-chip-name">Mom</div><div class="s-chip-rel">Age 68</div></div>
-            </div>
-            <div class="s-chip" style="background:#fff;border-color:var(--border)">
-              <div class="s-avi" style="width:22px;height:22px;font-size:8px;background:#1A6B5A">D</div>
-              <div><div class="s-chip-name">Dad</div><div class="s-chip-rel">Age 71</div></div>
-            </div>
-          </div>
-          <!-- Mom card -->
-          <div class="s-card" style="margin-bottom:8px">
-            <div class="s-member-header">
-              <div class="s-avi" style="width:30px;height:30px;font-size:11px;background:#C0457A">M</div>
-              <div><div class="s-member-name">Mom &middot; Maria Chen</div><div class="s-member-meta">Updated Feb 10, 2025</div></div>
-            </div>
-            <div class="s-doctor-said">Doctor said</div>
-            <div class="s-row">
-              <span class="s-row-label">Blood Sugar</span>
-              <span class="s-row-note">Doctor said: should be monitored</span>
-            </div>
-            <div class="s-row">
-              <span class="s-row-label">Heart Health</span>
-              <span class="s-row-note">Doctor said: this was healthy</span>
-            </div>
-            <div class="s-tap-more">Tap to read full summary &#8594;</div>
-            <div class="s-shared-by">Shared by Mom &middot; Dr. Chen visit Jan 20</div>
-          </div>
-          <!-- Dad card -->
-          <div class="s-card">
-            <div class="s-member-header">
-              <div class="s-avi" style="width:30px;height:30px;font-size:11px;background:#1A6B5A">D</div>
-              <div><div class="s-member-name">Dad &middot; David Chen</div><div class="s-member-meta">Updated Jan 22, 2025</div></div>
-            </div>
-            <div class="s-doctor-said">Doctor said</div>
-            <div class="s-row">
-              <span class="s-row-label">Bad Cholesterol</span>
-              <span class="s-row-note">Doctor said: needs improvement</span>
-            </div>
-            <div class="s-tap-more">Tap to read full summary &#8594;</div>
-            <div class="s-shared-by">Shared by Dad &middot; Dr. Patel visit Jan 18</div>
-          </div>
-        </div>
-        <div class="s-nav">
-          <div class="s-nav-tab"><svg width="13" height="13" stroke="#8AA39B" fill="none"><use href="#ico-home"/></svg><span>Home</span></div>
-          <div class="s-nav-tab"><svg width="13" height="13" stroke="#8AA39B" fill="none"><use href="#ico-mic"/></svg><span>Record</span></div>
-          <div class="s-nav-tab"><svg width="13" height="13" stroke="#8AA39B" fill="none"><use href="#ico-doc"/></svg><span>Doctors</span></div>
-          <div class="s-nav-tab"><svg width="13" height="13" stroke="#8AA39B" fill="none"><use href="#ico-upload"/></svg><span>Upload</span></div>
-          <div class="s-nav-tab on"><svg width="13" height="13" stroke="#1A6B5A" fill="none"><use href="#ico-users"/></svg><span>My Circle</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div><!-- /carousel-strip -->
-```
-
+    </div><!-- /carousel-strip -->
   </div><!-- /carousel-viewport -->
 
   <div class="carousel-nav">
     <button class="carousel-btn" id="cPrev" aria-label="Previous">
-      <svg width="18" height="18" stroke="#1A6B5A"><use href="#ico-arrow-l"/></svg>
+      <svg width="18" height="18" stroke="#1A6B5A">
+        <use href="#ico-arrow-l"/>
+      </svg>
     </button>
     <div class="carousel-nav-centre">
       <div class="carousel-pips">
@@ -486,185 +1621,241 @@ footer{background:var(–text);padding:60px 32px 40px}
       <div id="cCaptionSub" class="carousel-live-sub">All your visits and records, in one simple place.</div>
     </div>
     <button class="carousel-btn" id="cNext" aria-label="Next">
-      <svg width="18" height="18" stroke="#1A6B5A"><use href="#ico-arrow-r"/></svg>
+      <svg width="18" height="18" stroke="#1A6B5A">
+        <use href="#ico-arrow-r"/>
+      </svg>
     </button>
   </div>
 
 </section>
 
 <!-- HOW IT WORKS -->
-
 <section class="how-section" id="how-it-works">
   <div class="section">
     <div class="section-eyebrow">How it works</div>
     <h2 class="section-headline">Three simple steps.</h2>
-    <p class="section-body">No complicated setup. No medical jargon. Just clear, plain language &mdash; every time.</p>
+    <p class="section-body">No complicated setup. No medical jargon. Just clear, plain language &mdash; every
+      time.</p>
     <div class="steps-grid">
       <div>
         <div class="step-num">1</div>
         <div class="step-title">Record your visit</div>
-        <p class="step-body">Open the app when your appointment begins. Let your doctor know you're recording. CirclHealth listens quietly in the background.</p>
+        <p class="step-body">Open the app when your appointment begins. Let your doctor know you're recording.
+          CirclHealth listens quietly in the background.</p>
       </div>
       <div>
         <div class="step-num">2</div>
         <div class="step-title">Get a clear transcript &mdash; instantly</div>
-        <p class="step-body">When you're done, CirclHealth instantly turns what was said into a plain-language summary. No clinical jargon. Grade 6 reading level.</p>
+        <p class="step-body">When you're done, CirclHealth instantly turns what was said into a plain-language
+          summary. No clinical jargon. Grade 6 reading level.</p>
       </div>
       <div>
         <div class="step-num">3</div>
         <div class="step-title">Understand what was said</div>
-        <p class="step-body">Read it yourself, share it with family, or translate it for someone who needs it in their language. Your health information, clearly explained.</p>
+        <p class="step-body">Read it yourself, share it with family, or translate it for someone who needs it in
+          their language. Your health information, clearly explained.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FEATURES -->
-
 <section id="features" style="background:#fff">
   <div class="section">
     <div class="section-eyebrow">Features</div>
     <h2 class="section-headline">Built for real families.</h2>
-    <p class="section-body">Everything you need to stay on top of your health &mdash; and the health of the people you care about.</p>
+    <p class="section-body">Everything you need to stay on top of your health &mdash; and the health of the people
+      you care about.</p>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon"><svg width="22" height="22" stroke="#1A6B5A" fill="none"><use href="#ico-mic"/></svg></div>
+        <div class="feature-icon">
+          <svg width="22" height="22" stroke="#1A6B5A" fill="none">
+            <use href="#ico-mic"/>
+          </svg>
+        </div>
         <div class="feature-title">Record &amp; Transcribe</div>
-        <p class="feature-body">Ambient appointment recording. CirclHealth listens and produces a plain-language summary of everything your doctor said &mdash; including your next steps.</p>
+        <p class="feature-body">Ambient appointment recording. CirclHealth listens and produces a plain-language
+          summary of everything your doctor said &mdash; including your next steps.</p>
         <span class="badge-available">Available now</span>
       </div>
       <div class="feature-card">
-        <div class="feature-icon"><svg width="22" height="22" stroke="#1A6B5A" fill="none"><use href="#ico-file"/></svg></div>
+        <div class="feature-icon">
+          <svg width="22" height="22" stroke="#1A6B5A" fill="none">
+            <use href="#ico-file"/>
+          </svg>
+        </div>
         <div class="feature-title">Upload Health Records</div>
-        <p class="feature-body">Take a photo of a lab result, prescription, or discharge summary. CirclHealth reads it and explains what it means in plain language.</p>
-        <span class="badge-waitlist"><a href="mailto:payne.dale@outlook.com" style="color:inherit;text-decoration:none">Join the waiting list &rarr;</a></span>
+        <p class="feature-body">Take a photo of a lab result, prescription, or discharge summary. CirclHealth
+          reads it and explains what it means in plain language.</p>
+        <span class="badge-waitlist"><a href="mailto:payne.dale@outlook.com"
+                                        style="color:inherit;text-decoration:none">Join the waiting list &rarr;</a></span>
       </div>
       <div class="feature-card">
-        <div class="feature-icon"><svg width="22" height="22" stroke="#1A6B5A" fill="none"><use href="#ico-globe"/></svg></div>
+        <div class="feature-icon">
+          <svg width="22" height="22" stroke="#1A6B5A" fill="none">
+            <use href="#ico-globe"/>
+          </svg>
+        </div>
         <div class="feature-title">Translate &amp; Share</div>
-        <p class="feature-body">Send a translated copy of any summary to a family member in their language &mdash; by text message, email, or as a PDF. French, Spanish, Mandarin, Punjabi, and more.</p>
+        <p class="feature-body">Send a translated copy of any summary to a family member in their language
+          &mdash; by text message, email, or as a PDF. French, Spanish, Mandarin, Punjabi, and more.</p>
         <span class="badge-available">Available now</span>
       </div>
       <div class="feature-card">
-        <div class="feature-icon"><svg width="22" height="22" stroke="#1A6B5A" fill="none"><use href="#ico-users"/></svg></div>
+        <div class="feature-icon">
+          <svg width="22" height="22" stroke="#1A6B5A" fill="none">
+            <use href="#ico-users"/>
+          </svg>
+        </div>
         <div class="feature-title">My Circle</div>
-        <p class="feature-body">Add family members to your Circle. See their health summaries, check in on appointments, and coordinate care &mdash; all with their permission, all in one place.</p>
-        <span class="badge-waitlist"><a href="mailto:payne.dale@outlook.com" style="color:inherit;text-decoration:none">Join the waiting list &rarr;</a></span>
+        <p class="feature-body">Add family members to your Circle. See their health summaries, check in on
+          appointments, and coordinate care &mdash; all with their permission, all in one place.</p>
+        <span class="badge-waitlist"><a href="mailto:payne.dale@outlook.com"
+                                        style="color:inherit;text-decoration:none">Join the waiting list &rarr;</a></span>
       </div>
     </div>
 
-```
-<div class="privacy-block">
-  <div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap">
-    <div style="flex:1;min-width:280px">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-        <div style="width:40px;height:40px;border-radius:12px;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" stroke="white" fill="none"><use href="#ico-lock"/></svg></div>
-        <div style="font-size:14px;font-weight:700;color:var(--green-dark);letter-spacing:0.04em;text-transform:uppercase">Your data belongs to you</div>
+    <div class="privacy-block">
+      <div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+            <div style="width:40px;height:40px;border-radius:12px;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg width="20" height="20" stroke="white" fill="none">
+                <use href="#ico-lock"/>
+              </svg>
+            </div>
+            <div style="font-size:14px;font-weight:700;color:var(--green-dark);letter-spacing:0.04em;text-transform:uppercase">
+              Your data belongs to you
+            </div>
+          </div>
+          <p class="privacy-quote">"Your health information belongs to you &mdash; not to us, not to
+            advertisers, not to researchers. CirclHealth will never use it without your explicit permission.
+            Those decisions are yours to make and yours to change."</p>
+          <p class="privacy-attr">&mdash; CirclHealth</p>
+        </div>
+        <div class="privacy-cards">
+          <div class="privacy-card">
+            <div class="privacy-card-title">Original documents</div>
+            <div class="privacy-card-body">Discarded immediately after processing. Never stored. We delete
+              recordings right after transcription.
+            </div>
+          </div>
+          <div class="privacy-card">
+            <div class="privacy-card-title">Your summaries</div>
+            <div class="privacy-card-body">Encrypted. Under your control. Delete anytime.</div>
+          </div>
+          <div class="privacy-card">
+            <div class="privacy-card-title">No advertising</div>
+            <div class="privacy-card-body">We are a translation tool. Your data is not our business model.
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="privacy-quote">"Your health information belongs to you &mdash; not to us, not to advertisers, not to researchers. CirclHealth will never use it without your explicit permission. Those decisions are yours to make and yours to change."</p>
-      <p class="privacy-attr">&mdash; CirclHealth</p>
     </div>
-    <div class="privacy-cards">
-      <div class="privacy-card">
-        <div class="privacy-card-title">Original documents</div>
-        <div class="privacy-card-body">Discarded immediately after processing. Never stored. We delete recordings right after transcription.</div>
-      </div>
-      <div class="privacy-card">
-        <div class="privacy-card-title">Your summaries</div>
-        <div class="privacy-card-body">Encrypted. Under your control. Delete anytime.</div>
-      </div>
-      <div class="privacy-card">
-        <div class="privacy-card-title">No advertising</div>
-        <div class="privacy-card-body">We are a translation tool. Your data is not our business model.</div>
-      </div>
-    </div>
-  </div>
-</div>
-```
-
   </div>
 </section>
 
 <!-- VALUES -->
-
 <section class="values-section" id="values">
   <div class="section-eyebrow" style="text-align:center">What we stand for</div>
   <h2 class="section-headline" style="text-align:center;color:#fff;margin-bottom:12px">Built on four principles.</h2>
-  <p class="values-tagline">Clarity gives you the words. Agency gives you the voice. Trust opens the door. Community is where health thrives.</p>
+  <p class="values-tagline">Clarity gives you the words. Agency gives you the voice. Trust opens the door. Community
+    is where health thrives.</p>
   <div class="values-grid">
     <div class="value-card">
       <div class="value-name">Clarity</div>
       <div class="value-tagline">Clarity gives you the words.</div>
-      <p class="value-body">Medical language is designed for clinicians, not patients. We translate everything into plain, honest language that anyone can read and act on.</p>
+      <p class="value-body">Medical language is designed for clinicians, not patients. We translate everything
+        into plain, honest language that anyone can read and act on.</p>
     </div>
     <div class="value-card">
       <div class="value-name">Agency</div>
       <div class="value-tagline">Agency gives you the voice.</div>
-      <p class="value-body">Understanding your health gives you the ability to ask better questions, make better decisions, and be a more active participant in your own care.</p>
+      <p class="value-body">Understanding your health gives you the ability to ask better questions, make better
+        decisions, and be a more active participant in your own care.</p>
     </div>
     <div class="value-card">
       <div class="value-name">Trust</div>
       <div class="value-tagline">Trust opens the door.</div>
-      <p class="value-body">Your health information belongs to you &mdash; not to us, not to advertisers, not to researchers. CirclHealth will never use it without your explicit permission. Those decisions are yours to make and yours to change.</p>
+      <p class="value-body">Your health information belongs to you &mdash; not to us, not to advertisers, not to
+        researchers. CirclHealth will never use it without your explicit permission. Those decisions are yours
+        to make and yours to change.</p>
     </div>
     <div class="value-card">
       <div class="value-name">Community</div>
       <div class="value-tagline">Community is where health thrives.</div>
-      <p class="value-body">The most effective care happens when patients, caregivers, and providers are working from the same information. My Circle exists because no one should navigate their health alone &mdash; this is the benefit of the circle of care.</p>
+      <p class="value-body">The most effective care happens when patients, caregivers, and providers are working
+        from the same information. My Circle exists because no one should navigate their health alone &mdash;
+        this is the benefit of the circle of care.</p>
     </div>
   </div>
 </section>
 
 <!-- FOUNDERS -->
-
 <section id="founders" style="background:#fff">
   <div class="section">
     <div class="section-eyebrow">The team</div>
     <h2 class="section-headline">Built by people who care.</h2>
-    <p class="section-body">We started CirclHealth because we experienced the confusion firsthand &mdash; sitting in waiting rooms, reading test results that made no sense, trying to help aging parents navigate a system that wasn't designed for them.</p>
+    <p class="section-body">We started CirclHealth because we experienced the confusion firsthand &mdash; sitting in
+      waiting rooms, reading test results that made no sense, trying to help aging parents navigate a system that
+      wasn't designed for them.</p>
     <div class="founders-grid">
       <div class="founder-card">
         <div class="founder-avi">AK</div>
         <div class="founder-name">Dr. Andrew Kouri</div>
         <div class="founder-role">Clinical Co-Founder</div>
-        <p class="founder-desc">Internal medicine physician and clinician scientist. Andrew brings clinical credibility and a deep understanding of how the healthcare system communicates &mdash; and where it fails patients.</p>
+        <p class="founder-desc">Internal medicine physician and clinician scientist. Andrew brings clinical
+          credibility and a deep understanding of how the healthcare system communicates &mdash; and where it
+          fails patients.</p>
       </div>
       <div class="founder-card">
         <div class="founder-avi">DP</div>
         <div class="founder-name">Dale Payne</div>
         <div class="founder-role">Health Systems Co-Founder</div>
-        <p class="founder-desc">Health programmes and life sciences background. Dale leads product vision and strategy, with a focus on making CirclHealth genuinely useful for families navigating complex healthcare journeys.</p>
+        <p class="founder-desc">Health programmes and life sciences background. Dale leads product vision and
+          strategy, with a focus on making CirclHealth genuinely useful for families navigating complex
+          healthcare journeys.</p>
       </div>
       <div class="founder-card">
         <div class="founder-avi">SN</div>
         <div class="founder-name">Stefan New</div>
         <div class="founder-role">Technical Co-Founder</div>
-        <p class="founder-desc">Full-stack developer and AI technical expert. Stefan architects the privacy-first systems that make CirclHealth's data commitments more than just a promise &mdash; they're built into how the product works.</p>
+        <p class="founder-desc">Full-stack developer and AI technical expert. Stefan architects the
+          privacy-first systems that make CirclHealth's data commitments more than just a promise &mdash;
+          they're built into how the product works.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-
-<section style="background:var(--green-xlight);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 32px;text-align:center">
+<section
+        style="background:var(--green-xlight);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 32px;text-align:center">
   <div style="max-width:560px;margin:0 auto">
-    <svg width="52" height="52" style="margin-bottom:20px"><use href="#circllogo-white"/></svg>
-    <h2 style="font-family:'Fraunces',serif;font-size:clamp(28px,4vw,44px);font-weight:400;color:var(--green-dark);margin-bottom:12px;letter-spacing:-0.02em">Get early access.</h2>
-    <p style="font-size:16px;color:var(--text-mid);margin-bottom:32px;line-height:1.6">We're welcoming our first beta users in Canada now. Sign up and we'll reach out with access as soon as a spot opens.</p>
-    <a href="mailto:payne.dale@outlook.com" style="background:var(--green);color:#fff;padding:16px 36px;border-radius:100px;font-size:16px;font-weight:600;text-decoration:none;display:inline-block">Join the waiting list</a>
-    <p style="margin-top:16px;font-size:13px;color:var(--text-light)">No credit card required. We'll be in touch personally.</p>
+    <svg width="52" height="52" style="margin-bottom:20px">
+      <use href="#circllogo-white"/>
+    </svg>
+    <h2 style="font-family:'Fraunces',serif;font-size:clamp(28px,4vw,44px);font-weight:400;color:var(--green-dark);margin-bottom:12px;letter-spacing:-0.02em">
+      Get early access.</h2>
+    <p style="font-size:16px;color:var(--text-mid);margin-bottom:32px;line-height:1.6">We're welcoming our first
+      beta users in Canada now. Sign up and we'll reach out with access as soon as a spot opens.</p>
+    <a href="mailto:payne.dale@outlook.com"
+       style="background:var(--green);color:#fff;padding:16px 36px;border-radius:100px;font-size:16px;font-weight:600;text-decoration:none;display:inline-block">Join
+      the waiting list</a>
+    <p style="margin-top:16px;font-size:13px;color:var(--text-light)">No credit card required. We'll be in touch
+      personally.</p>
   </div>
 </section>
 
 <!-- FOOTER -->
-
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
       <div>
         <div class="footer-wordmark">
-          <svg width="28" height="28"><use href="#circllogo-white"/></svg>
+          <svg width="28" height="28">
+            <use href="#circllogo-white"/>
+          </svg>
           CirclHealth
         </div>
         <p class="footer-tagline">Health. Simple.</p>
@@ -702,33 +1893,49 @@ footer{background:var(–text);padding:60px 32px 40px}
 </footer>
 
 <script>
-(function(){
-  var captions=[
-    {title:'Your Health Dashboard',sub:'All your visits and records, in one simple place.'},
-    {title:'Doctor Summary',sub:"Your doctor's words, in plain language. No jargon."},
-    {title:'My Circle',sub:'Keep an eye on the people you care about.'}
-  ];
-  var cur=0;
-  var strip=document.getElementById('cStrip');
-  var pips=document.querySelectorAll('.carousel-pip');
-  var ctitle=document.getElementById('cCaptionTitle');
-  var csub=document.getElementById('cCaptionSub');
-  function goTo(n){
-    cur=(n+3)%3;
-    strip.style.transform='translateX(-'+(cur*100)+'%)';
-    pips.forEach(function(p,i){p.classList.toggle('on',i===cur);});
-    ctitle.textContent=captions[cur].title;
-    csub.textContent=captions[cur].sub;
-  }
-  document.getElementById('cPrev').addEventListener('click',function(){goTo(cur-1);});
-  document.getElementById('cNext').addEventListener('click',function(){goTo(cur+1);});
-  pips.forEach(function(p){p.addEventListener('click',function(){goTo(parseInt(p.dataset.idx));});});
-  var tx=0;
-  var vp=document.querySelector('.carousel-viewport');
-  vp.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
-  vp.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40)goTo(dx<0?cur+1:cur-1);},{passive:true});
-})();
-</script>
+  (function () {
+    var captions = [
+      {title: 'Your Health Dashboard', sub: 'All your visits and records, in one simple place.'},
+      {title: 'Doctor Summary', sub: "Your doctor's words, in plain language. No jargon."},
+      {title: 'My Circle', sub: 'Keep an eye on the people you care about.'}
+    ];
+    var cur = 0;
+    var strip = document.getElementById('cStrip');
+    var pips = document.querySelectorAll('.carousel-pip');
+    var ctitle = document.getElementById('cCaptionTitle');
+    var csub = document.getElementById('cCaptionSub');
 
+    function goTo(n) {
+      cur = (n + 3) % 3;
+      strip.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      pips.forEach(function (p, i) {
+        p.classList.toggle('on', i === cur);
+      });
+      ctitle.textContent = captions[cur].title;
+      csub.textContent = captions[cur].sub;
+    }
+
+    document.getElementById('cPrev').addEventListener('click', function () {
+      goTo(cur - 1);
+    });
+    document.getElementById('cNext').addEventListener('click', function () {
+      goTo(cur + 1);
+    });
+    pips.forEach(function (p) {
+      p.addEventListener('click', function () {
+        goTo(parseInt(p.dataset.idx));
+      });
+    });
+    var tx = 0;
+    var vp = document.querySelector('.carousel-viewport');
+    vp.addEventListener('touchstart', function (e) {
+      tx = e.touches[0].clientX;
+    }, {passive: true});
+    vp.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - tx;
+      if (Math.abs(dx) > 40) goTo(dx < 0 ? cur + 1 : cur - 1);
+    }, {passive: true});
+  })();
+</script>
 </body>
 </html>
